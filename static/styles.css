@@ -1,3 +1,91 @@
 body{
   font-family: arial, sans-serif;
 }
+
+.container{
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* MAIN PAGE. LIST OF MENUS */
+
+.title{
+  text-align: center;
+  color: #29B17B;
+}
+
+.feedback{
+  font-weight: bold;
+  text-align: center;
+  color: #F15060;
+}
+
+.create-item{
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  padding: 10px;
+  background-color: #00A3E1;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.create-item:hover{
+  opacity: 0.9;
+}
+
+.menu-item{
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.menu-item .price{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-item .price span{
+  padding: 5px;
+  background-color: #ddd;
+  display: flex;
+  font-weight: bold;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+
+.btn{
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: .9em;
+  font-weight: bold;
+  color: white;
+}
+
+.menu-item .edit{
+  background-color: #F1B434;
+}
+
+.menu-item .delete{
+  background-color: #F15060;
+}
+
+/* MAIN PAGE. LIST OF MENUS */
+
+form{
+  text-align: center;
+}
+
+form input[type="submit"]{
+  background-color: #00A3E1;
+  border: none;
+  cursor: pointer;
+}
+
+form .cancel{
+  background-color: #F15060;
+}
