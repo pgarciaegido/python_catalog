@@ -3,13 +3,13 @@
 {% block content %}
 <h1 class="title">{{restaurant.name}}</h1>
   <!-- array of messages -->
-  <!-- {% with messages = get_flashed_messages() %}
+  {% with messages = get_flashed_messages() %}
 {% if messages %}
     {% for message in messages %}
       <p class="feedback">{{message}}</p>
     {% endfor %}
 {% endif %}
-  {% endwith %} -->
+  {% endwith %}
 
 <a href='{{url_for('newMenuItem', restaurant_id=restaurant.id)}}' class="create-item">Create new menu item</a>
 {% for i in items %}

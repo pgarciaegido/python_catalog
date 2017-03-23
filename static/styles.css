@@ -43,6 +43,11 @@ body{
   padding: 10px;
 }
 
+.menu-item .name-anchor{
+  text-decoration: none;
+  color: black;
+}
+
 .menu-item .price{
   display: flex;
   justify-content: flex-end;

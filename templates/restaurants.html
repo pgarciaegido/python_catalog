@@ -2,18 +2,18 @@
 
 {% block content %}
   <!-- array of messages -->
-  <!-- {% with messages = get_flashed_messages() %}
+  {% with messages = get_flashed_messages() %}
 {% if messages %}
     {% for message in messages %}
       <p class="feedback">{{message}}</p>
     {% endfor %}
 {% endif %}
-  {% endwith %} -->
+  {% endwith %}
 
 <a href='{{url_for('newRestaurant')}}' class="create-item">Create new Restaurant</a>
 {% for r in restaurants %}
-<div class="menu-item">
-  <h2 class="name">{{r.name}}</h2>
+<div href="{{url_for('showMenu', restaurant_id = r.id)}}" class="menu-item">
+  <a href="{{url_for('showMenu', restaurant_id = r.id)}}" class="name-anchor"><h2 class="name">{{r.name}}</h2></a>
   <p class="description">{{r.description}}</p>
   <a href = '{{url_for('editRestaurant', restaurant_id = r.id) }}' class="edit btn">Edit</a>
   <a href = '{{url_for('deleteRestaurant', restaurant_id = r.id) }}' class="delete btn">Delete</a>

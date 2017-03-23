@@ -2,8 +2,14 @@
 {% block content %}
 <h1 class="title">New menu item</h1>
 <form action="{{url_for('newMenuItem', restaurant_id=restaurant.id )}}" method="POST">
-  Name:
+  <p>Name:</p>
   <input type="text" name="name" />
+  <p>Description:</p>
+  <textarea name="description" cols="30" rows="10"></textarea>
+  <p>Price:</p>
+  <input type="text" name="price" />
+  <p>Course:</p>
+  <input type="text" name="course" /><br/>
   <input type="submit" value="Create" class="btn" />
 </form>
 {% endblock %}
