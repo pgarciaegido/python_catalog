@@ -14,25 +14,25 @@ item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$
 # This page will show all my restaurants
 @app.route('/')
 def showRestaurants():
-    return 'This page will show all my restaurants'
+    return render_template('restaurants.html', restaurants=restaurants)
 
 
 # This page will create a new restaurant
 @app.route('/restaurant/new')
 def newRestaurant():
-    return 'This page will create a new restaurant'
+    return render_template('new_restaurant.html')
 
 
 # This page will edit existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit')
 def editRestaurant(restaurant_id):
-    return 'This page will be editing restaurant with id %s ' % restaurant_id
+    return render_template('edit_restaurant.html', restaurant=restaurant)
 
 
 # This page will delete existing restaurant
 @app.route('/restaurant/<int:restaurant_id>/delete')
 def deleteRestaurant(restaurant_id):
-    return 'This page will be deleting restaurant with id %s ' % restaurant_id
+    return render_template('delete_restaurant.html', restaurant=restaurant)
 
 
 # This page will show all my menus from one restaurant
