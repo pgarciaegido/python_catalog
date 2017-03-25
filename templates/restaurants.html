@@ -16,10 +16,12 @@
 </div>
 
 {% for r in restaurants %}
-<div href="{{url_for('showMenu', restaurant_id = r.id)}}" class="menu-item">
+<div href="{{url_for('showMenu', restaurant_id = r.id)}}" class="menu-item restaurant">
   <a href="{{url_for('showMenu', restaurant_id = r.id)}}" class="name-anchor"><h2 class="name">{{r.name}}</h2></a>
-  <a href = '{{url_for('editRestaurant', restaurant_id = r.id) }}' class="edit btn">Edit</a>
-  <a href = '{{url_for('deleteRestaurant', restaurant_id = r.id) }}' class="delete btn">Delete</a>
+  <div class="buttons">
+    <a href = '{{url_for('editRestaurant', restaurant_id = r.id) }}' class="edit btn">Edit</a>
+    <a href = '{{url_for('deleteRestaurant', restaurant_id = r.id) }}' class="delete btn">Delete</a>
+  </div>
 </div>
 {% endfor %}
 {% endblock %}

@@ -10,6 +10,7 @@ body{
   padding: 30px 0;
 }
 
+/************************************* HEADER *********************************/
 header{
   padding-bottom: 5px;
   border-bottom: 1px solid #eee;
@@ -19,6 +20,8 @@ header a img{
   display: block;
   margin: 0 auto;
 }
+
+/*************************** CREATE NEW **************************************/
 
 .create,
 .title-create{
@@ -36,20 +39,6 @@ header a img{
   margin-top: 10px;
 }
 
-/* MAIN PAGE. LIST OF MENUS */
-
-.title{
-  color: #FBB829;
-  margin: 0;
-  margin-top: 10px;
-}
-
-.feedback{
-  font-weight: bold;
-  text-align: center;
-  color: #F15060;
-}
-
 .create-item{
   padding: 10px 15px;
   background-color: #E7687F;
@@ -64,11 +53,20 @@ header a img{
   opacity: 0.9;
 }
 
+.title{
+  color: #FBB829;
+  margin: 0;
+  margin-top: 10px;
+}
+
+/*********************** MENU ITEM OR RESTAURANT ****************************/
+
 .menu-item{
   box-sizing: border-box;
   padding: 10px;
   padding-bottom: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  border-left: 2px solid #eee;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -83,7 +81,7 @@ header a img{
 }
 
 .menu-item .name{
-  margin-top: 0;
+  margin: 0;
 }
 
 .menu-item .description{
@@ -105,24 +103,48 @@ header a img{
   border-radius: 5px;
 }
 
-.btn{
-  padding: 5px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: .9em;
-  font-weight: bold;
-  color: white;
-}
-
 .menu-item .edit{
   background-color: #0B8194;
+  margin-right:10px;
 }
 
 .menu-item .delete{
   background-color: #F15060;
 }
 
-/* MAIN PAGE. LIST OF MENUS */
+.menu-item.restaurant{
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item.restaurant .buttons{
+  margin-top: 5px;
+}
+
+/****************************** FEEDBACK ************************************/
+.feedback{
+  font-weight: bold;
+  text-align: center;
+  color: #F15060;
+}
+
+
+/******************************* BUTTONS *************************************/
+.btn{
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: .9em;
+  font-weight: bold;
+  color: white;
+}
+.btn:hover{
+  opacity: 0.9;
+}
+
+
+
+/********************************* FORMS *************************************/
 
 form{
   width: 400px;
@@ -146,7 +168,7 @@ form p{
 form input[type="submit"]{
   width: auto;
   margin-top: 20px;
-  background-color: #00A3E1;
+  background-color: #0B8194;
   border: none;
   cursor: pointer;
   padding: 10px 15px;
@@ -154,4 +176,18 @@ form input[type="submit"]{
 
 form .cancel{
   background-color: #F15060;
+}
+
+.form-title{
+  text-align: center;
+  color: #0B8194;
+}
+
+.breadcrumb{
+  color: #FBB829;
+  margin: 0;
+}
+
+.form-delete{
+  text-align: center;
 }

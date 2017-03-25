@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>{{restaurant.name}}</h3>
-<h1 class="title">Edit Restaurant</h1>
+<h3 class="breadcrumb">{{restaurant.name}}</h3>
+<h2 class="form-title">Edit Restaurant</h2>
 <form action="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}" method="POST">
   Name:
   <input type="text" name="name" placeholder="{{restaurant.name}}"/>

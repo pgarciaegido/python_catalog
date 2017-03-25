@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>{{restaurant.name}}</h3>
-<h1 class="title">Delete Restaurant</h1>
-<form action="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}" method="POST">
-  <input type="submit" value="Delete!" class="btn"/>
+<h3 class="breadcrumb">{{restaurant.name}}</h3>
+<h2 class="form-title">Delete Restaurant</h2>
+<form class="form-delete" action="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}" method="POST">
+  <input type="submit" value="Delete" class="btn"/>
   <a href="{{url_for('showRestaurants')}}" class="cancel btn">Cancel</a>
 </form>
 {% endblock %}
