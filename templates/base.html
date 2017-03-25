@@ -1,8 +1,11 @@
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+  <header>
+    <a href="/"><img src="{{url_for('static', filename='img/logo.svg')}}" alt="yumm.py logo"></a>
+  </header>
   <div class="container">
     {% block content %}
     {% endblock %}

@@ -1,18 +1,47 @@
 body{
   font-family: arial, sans-serif;
+  color: #333;
 }
 
 .container{
   max-width: 1000px;
   display: block;
   margin: 0 auto;
+  padding: 30px 0;
+}
+
+header{
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+header a img{
+  display: block;
+  margin: 0 auto;
+}
+
+.create,
+.title-create{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #eee;
+}
+
+.create h3{
+  color: #333333;
+  margin: 0;
+  margin-top: 10px;
 }
 
 /* MAIN PAGE. LIST OF MENUS */
 
 .title{
-  text-align: center;
-  color: #29B17B;
+  color: #FBB829;
+  margin: 0;
+  margin-top: 10px;
 }
 
 .feedback{
@@ -22,16 +51,13 @@ body{
 }
 
 .create-item{
-  display: block;
-  margin: 0 auto;
-  width: 180px;
-  padding: 10px;
-  background-color: #00A3E1;
+  padding: 10px 15px;
+  background-color: #E7687F;
   color: white;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .create-item:hover{
@@ -41,11 +67,28 @@ body{
 .menu-item{
   box-sizing: border-box;
   padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.menu-item:hover{
+  background-color: #eee;
 }
 
 .menu-item .name-anchor{
   text-decoration: none;
   color: black;
+}
+
+.menu-item .name{
+  margin-top: 0;
+}
+
+.menu-item .description{
+  font-size: 0.9em;
+  line-height: 1.3em;
 }
 
 .menu-item .price{
@@ -72,7 +115,7 @@ body{
 }
 
 .menu-item .edit{
-  background-color: #F1B434;
+  background-color: #0B8194;
 }
 
 .menu-item .delete{
@@ -82,13 +125,31 @@ body{
 /* MAIN PAGE. LIST OF MENUS */
 
 form{
-  text-align: center;
+  width: 400px;
+  margin:0 auto;
+}
+
+form input,
+form textarea{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+form p{
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 form input[type="submit"]{
+  width: auto;
+  margin-top: 20px;
   background-color: #00A3E1;
   border: none;
   cursor: pointer;
+  padding: 10px 15px;
 }
 
 form .cancel{

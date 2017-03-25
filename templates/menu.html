@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">{{restaurant.name}}</h1>
+
   <!-- array of messages -->
   {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -11,7 +11,11 @@
 {% endif %}
   {% endwith %}
 
-<a href='{{url_for('newMenuItem', restaurant_id=restaurant.id)}}' class="create-item">Create new menu item</a>
+<div class="title-create">
+  <h3 class="title">{{restaurant.name}}</h3>
+  <a href='{{url_for('newMenuItem', restaurant_id=restaurant.id)}}' class="create-item">Create new menu item</a>
+</div>
+
 {% for i in items %}
 <div class="menu-item">
   <h2 class="name">{{i.name}}</h2>
