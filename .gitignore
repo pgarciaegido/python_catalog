@@ -1,1 +1,5 @@
 *.pyc
+Vagrantfile
+pg_config.sh
+.vagrant
+restaurantmenu.db

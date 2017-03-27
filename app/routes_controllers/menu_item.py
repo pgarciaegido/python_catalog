@@ -4,7 +4,7 @@ from flask import (Flask, render_template, request, redirect, url_for, jsonify,
 from flask import session as login_session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Restaurant, Base, MenuItem
+from app.models.models import Restaurant, Base, MenuItem
 
 item = Blueprint('item', __name__, template_folder='templates')
 

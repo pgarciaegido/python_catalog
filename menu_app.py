@@ -4,14 +4,15 @@ from flask import (Flask, render_template, request, redirect, url_for, jsonify,
 from flask import session as login_session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Restaurant, Base, MenuItem
+
+from app.models.models import Restaurant, MenuItem, Base
 
 # ROUTES =====================================================================
-from auth_google import auth
-from routes_restaurants import rest
-from routes_menu_item import item
+from app.routes_controllers.auth_google import auth
+from app.routes_controllers.restaurants import rest
+from app.routes_controllers.menu_item import item
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='app/templates')
 app.register_blueprint(auth)
 app.register_blueprint(rest)
 app.register_blueprint(item)
