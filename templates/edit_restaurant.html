@@ -2,10 +2,10 @@
 {% block content %}
 <h3 class="breadcrumb">{{restaurant.name}}</h3>
 <h2 class="form-title">Edit Restaurant</h2>
-<form action="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}" method="POST">
+<form action="{{url_for('.editRestaurant', restaurant_id=restaurant.id)}}" method="POST">
   Name:
   <input type="text" name="name" placeholder="{{restaurant.name}}"/>
   <input type="submit" value="Edit" class="btn"/>
-  <a href="{{url_for('showRestaurants', restaurant_id=restaurant.id)}}" class="cancel btn">Cancel</a>
+  <a href="{{url_for('.showRestaurants', restaurant_id=restaurant.id)}}" class="cancel btn">Cancel</a>
 </form>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="form-title">New Restaurant</h2>
-<form action="{{url_for('newRestaurant')}}" method="POST">
+<form action="{{url_for('.newRestaurant')}}" method="POST">
   Name:
   <input type="text" name="name" />
   <input type="submit" value="Create" class="btn" />

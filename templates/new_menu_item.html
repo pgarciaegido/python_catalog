@@ -2,7 +2,7 @@
 {% block content %}
 <h3 class="breadcrumb">Restaurant: {{restaurant.name}}</h3>
 <h2 class="form-title">New menu item</h2>
-<form action="{{url_for('newMenuItem', restaurant_id=restaurant.id )}}" method="POST">
+<form action="{{url_for('.newMenuItem', restaurant_id=restaurant.id )}}" method="POST">
   <p>Name:</p>
   <input type="text" name="name" />
   <p>Description:</p>
