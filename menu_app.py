@@ -2,7 +2,7 @@ from flask import (Flask)
 
 
 # ROUTES =====================================================================
-from app.routes_controllers.auth_google import auth
+from app.routes_controllers.auth_google import gauth
 from app.routes_controllers.restaurants import rest
 from app.routes_controllers.menu_item import item
 from app.routes_controllers.api_json import api
@@ -11,7 +11,7 @@ from app.routes_controllers.api_json import api
 app = Flask(__name__, template_folder='app/templates',
             static_folder='app/static')
 
-app.register_blueprint(auth)
+app.register_blueprint(gauth)
 app.register_blueprint(rest)
 app.register_blueprint(item)
 app.register_blueprint(api)
