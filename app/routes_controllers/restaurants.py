@@ -1,25 +1,17 @@
-from flask import (Flask, render_template, request, redirect, url_for, jsonify,
-                   flash, Blueprint)
+from flask import (render_template, request, redirect, url_for, flash,
+                   Blueprint)
 
-from flask import session as login_session
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from app.models.models import Restaurant, Base, MenuItem
+# Imports db session
+from app.models.session_setup import export_db_session
+from app.models.models import Restaurant, MenuItem
 
 rest = Blueprint('restaurant', __name__, template_folder='templates')
-
-
-# DB SETTINGS =================================================================
-engine = create_engine('sqlite:///restaurantmenu.db')
-Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+session = export_db_session()
 
 
 @rest.route('/')
 def showRestaurants():
     """ List all restaurants from db """
-    print(login_session)
     restaurants = session.query(Restaurant).all()
     return render_template('restaurants.html', restaurants=restaurants)
 
