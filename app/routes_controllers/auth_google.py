@@ -9,6 +9,9 @@ import httplib2
 import json
 import requests
 
+from utils import get_user_id, create_user
+
+
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 
@@ -69,6 +72,7 @@ def gconnect():
         return json_response("Token's client ID does not match app's", 401)
 
     stored_access_token = login_session.get('access_token')
+    print(stored_access_token)
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
         return json_response('Current user is already connected.', 200)
@@ -88,6 +92,13 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
+    # Searches for email in DB
+    user_id = get_user_id(login_session['email'])
+    if not user_id:
+        # Creates user in DB and returns db id
+        login_session['id'] = create_user(login_session)
+
+
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -102,7 +113,6 @@ def gconnect():
 
 @gauth.route('/gdisconnect')
 def gdisconnect():
-    print(login_session['access_token'])
     access_token = login_session['access_token']
     print 'In gdisconnect access token is %s', access_token
     print 'User name is: '
@@ -111,9 +121,7 @@ def gdisconnect():
         print 'Access Token is None'
         return json_response('Current user not connected.', 401)
 
-    url = """https://accounts.google.com/o/oauth2/revoke
-             ?token=%s""" % login_session['access_token']
-
+    url = "https://accounts.google.com/o/oauth2/revoke?token=%s" % login_session['access_token']
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     print 'result is '
@@ -124,6 +132,7 @@ def gdisconnect():
         del login_session['username']
         del login_session['email']
         del login_session['picture']
+        del login_session['id']
         return json_response('Succesfully disconnected.', 200)
     else:
         return json_response('Failed to revoke token for given user.', 400)

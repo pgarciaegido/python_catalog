@@ -1,6 +1,6 @@
 from flask import (render_template, request, redirect, url_for, flash,
                    Blueprint)
-
+from flask import session as login_session
 # Imports db session
 from app.models.session_setup import export_db_session
 from app.models.models import Restaurant, MenuItem
@@ -14,10 +14,15 @@ def showMenu(restaurant_id):
 
     """ Shows all menu items from a certain restaurant """
 
+    loged_user_id = login_session['id']
     items = session.query(MenuItem).filter_by(
                                     restaurant_id=restaurant_id).all()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    return render_template('menu.html', items=items, restaurant=restaurant)
+    if restaurant.user_id == loged_user_id:
+        return render_template('menu.html', items=items, restaurant=restaurant)
+    else:
+        return render_template('public_menu.html', items=items,
+                               restaurant=restaurant)
 
 
 @item.route('/restaurant/<int:restaurant_id>/menu/new',
@@ -28,13 +33,19 @@ def newMenuItem(restaurant_id):
         POST: Stores new menu item into db and redirects to restaurant menu """
 
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    # Current user (if there is one) is not the creator
+    if login_session['id'] != restaurant.user_id:
+        return 'User not identified. Access denied'
+
     if request.method == 'POST':
+
         name = request.form['name']
         new_item = MenuItem(name=name,
                             description=request.form['description'],
                             price=request.form['price'],
                             course=request.form['course'],
-                            restaurant_id=restaurant_id)
+                            restaurant_id=restaurant_id,
+                            user_id=restaurant.user_id)
         session.add(new_item)
         session.commit()
         flash("New menu item %s has been added" % name)
@@ -52,6 +63,10 @@ def editMenuItem(restaurant_id, menu_id):
 
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     item = session.query(MenuItem).filter_by(id=menu_id).one()
+    # Current user (if there is one) is not the creator
+    if login_session['id'] != restaurant.user_id:
+        return 'User not identified. Access denied'
+
     if request.method == 'POST':
         item.name = request.form['name']
         item.description = request.form['description']
@@ -74,6 +89,11 @@ def deleteMenuItem(restaurant_id, menu_id):
 
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     item = session.query(MenuItem).filter_by(id=menu_id).one()
+
+    # Current user (if there is one) is not the creator
+    if login_session['id'] != restaurant.user_id:
+        return 'User not identified. Access denied'
+    
     if request.method == 'POST':
         session.delete(item)
         session.commit()

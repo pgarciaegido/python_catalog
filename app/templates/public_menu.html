@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="title">{{restaurant.name}}</h3>
+
+{% for i in items %}
+<div class="menu-item">
+  <h2 class="name">{{i.name}}</h2>
+  <p class="description">{{i.description}}</p>
+  <div class="price"> <span>{{i.price}}</span></div>
+</div>
+{% endfor %}
+{% endblock %}
