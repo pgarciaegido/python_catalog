@@ -1,6 +1,8 @@
+from flask import make_response
 from flask import session as login_session
 from app.models.models import User, Restaurant, MenuItem
 from app.models.session_setup import export_db_session
+import json
 
 session = export_db_session()
 
@@ -27,3 +29,12 @@ def get_user_id(email):
         return user.id
     except:
         return None
+
+
+def json_response(message, server_code):
+
+    """ Respond using JSON easily """
+
+    response = make_response(json.dumps(message), server_code)
+    response.headers['Content-Type'] = 'application/json'
+    return response

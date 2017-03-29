@@ -4,7 +4,14 @@
 </head>
 <body>
   <header>
-    <a href="/"><img src="{{url_for('static', filename='img/logo.svg')}}" alt="yumm.py logo"></a>
+    <div class="header-container">
+      <a href="/"><img src="{{url_for('static', filename='img/logo.svg')}}" alt="yumm.py logo"></a>
+      {% if user_logged %}
+        <span class="hright user-logged">{{user_logged}}</span>
+      {% else %}
+        <a href="/login" class="hright header-login">Login</a>
+      {% endif %}
+    </div>
   </header>
   <div class="container">
     {% block content %}

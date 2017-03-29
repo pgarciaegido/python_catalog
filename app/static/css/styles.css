@@ -21,6 +21,35 @@ header a img{
   margin: 0 auto;
 }
 
+.hright{
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+
+.header-login{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background-color: #FBB829;
+  padding: 5px 7px;
+  border-radius: 5px;
+}
+
+.user-logged{
+  top: 9px;
+  font-weight: bold;
+}
+
+.header-container{
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+
 /*************************** CREATE NEW **************************************/
 
 .create,

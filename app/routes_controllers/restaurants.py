@@ -14,8 +14,14 @@ def showRestaurants():
 
     """ List all restaurants from db """
 
+    # If no user logged in, user_logged = None
+    try:
+        user_logged = login_session['username']
+    except:
+        user_logged = None
+
     restaurants = session.query(Restaurant).all()
-    return render_template('restaurants.html', restaurants=restaurants)
+    return render_template('restaurants.html', restaurants=restaurants, user_logged=user_logged)
 
 
 @rest.route('/restaurant/new', methods=['GET', 'POST'])

@@ -14,7 +14,12 @@ def showMenu(restaurant_id):
 
     """ Shows all menu items from a certain restaurant """
 
-    loged_user_id = login_session['id']
+    # If no user logged in, user_logged = None
+    try:
+        loged_user_id = login_session['id']
+    except:
+        loged_user_id = None
+
     items = session.query(MenuItem).filter_by(
                                     restaurant_id=restaurant_id).all()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
@@ -93,7 +98,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     # Current user (if there is one) is not the creator
     if login_session['id'] != restaurant.user_id:
         return 'User not identified. Access denied'
-    
+
     if request.method == 'POST':
         session.delete(item)
         session.commit()
