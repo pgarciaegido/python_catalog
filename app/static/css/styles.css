@@ -1,4 +1,5 @@
 body{
+  margin: 8px 0;
   font-family: arial, sans-serif;
   color: #333;
 }
@@ -12,7 +13,7 @@ body{
 
 /************************************* HEADER *********************************/
 header{
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
 
@@ -21,13 +22,23 @@ header a img{
   margin: 0 auto;
 }
 
-.hright{
+.loggedin{
   position: absolute;
   right: 0;
-  top: 4px;
+  top: 12px;
 }
 
-.header-login{
+.logout{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background-color: #F15060;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.header a{
   text-decoration: none;
   color: white;
   font-weight: bold;
@@ -48,12 +59,21 @@ header a img{
   position: relative;
 }
 
+.line-gradient{
+  width: 100%;
+  height: 5px;
+  position: relative;
+  background: #e84ad5;
+  background: -moz-linear-gradient(left, #e84ad5 0%, #00788a 100%);
+  background: -webkit-linear-gradient(left, #e84ad5 0%,#00788a 100%);
+  background: linear-gradient(to right, #e84ad5 0%,#00788a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e84ad5', endColorstr='#00788a',GradientType=1 );
+}
 
 
 /*************************** CREATE NEW **************************************/
 
-.create,
-.title-create{
+.create{
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -83,24 +103,59 @@ header a img{
 }
 
 .title{
-  color: #FBB829;
   margin: 0;
   margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
-/*********************** MENU ITEM OR RESTAURANT ****************************/
+/************************ CALL TO ACTION ***********************************/
+
+.call{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.call-button{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.call-button a{
+  color: #0B8194;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px 20px;
+  border: 3px solid #0B8194;
+}
+
+/****************************** MENU ITEM ************************************/
 
 .menu-item{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/***************************** RESTAURANT ************************************/
+
+.menu-item .restaurant,
+.menu-item .item{
+  width: 50%;
   box-sizing: border-box;
   padding: 10px;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-left: 2px solid #eee;
+  border-left: 2px solid #EEE;
   cursor: pointer;
   transition: 0.25s;
 }
 
-.menu-item:hover{
+.menu-item .item{
+  cursor: auto;
+}
+
+.menu-item .restaurant:hover,
+.menu-item .item:hover{
   background-color: #eee;
 }
 
@@ -109,8 +164,15 @@ header a img{
   color: black;
 }
 
+.title-create{
+  text-align: center;
+  margin: 30px 0;
+}
+
 .menu-item .name{
   margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .menu-item .description{
@@ -133,20 +195,21 @@ header a img{
 }
 
 .menu-item .edit{
-  background-color: #0B8194;
+  color: #0B8194;
   margin-right:10px;
 }
 
 .menu-item .delete{
-  background-color: #F15060;
+  color: #F15060;
 }
 
-.menu-item.restaurant{
-  display: flex;
-  justify-content: space-between;
+.menu-item .delete:hover,
+.menu-item .edit:hover{
+  opacity: 0.5;
 }
 
-.menu-item.restaurant .buttons{
+.menu-item .restaurant .buttons{
+  text-align: center;
   margin-top: 5px;
 }
 

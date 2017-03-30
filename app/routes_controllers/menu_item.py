@@ -14,20 +14,12 @@ def showMenu(restaurant_id):
 
     """ Shows all menu items from a certain restaurant """
 
-    # If no user logged in, user_logged = None
-    try:
-        loged_user_id = login_session['id']
-    except:
-        loged_user_id = None
-
     items = session.query(MenuItem).filter_by(
                                     restaurant_id=restaurant_id).all()
+
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    if restaurant.user_id == loged_user_id:
-        return render_template('menu.html', items=items, restaurant=restaurant)
-    else:
-        return render_template('public_menu.html', items=items,
-                               restaurant=restaurant)
+
+    return render_template('menu.html', items=items, restaurant=restaurant)
 
 
 @item.route('/restaurant/<int:restaurant_id>/menu/new',
@@ -39,7 +31,7 @@ def newMenuItem(restaurant_id):
 
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     # Current user (if there is one) is not the creator
-    if login_session['id'] != restaurant.user_id:
+    if login_session['user_id'] != restaurant.user_id:
         return 'User not identified. Access denied'
 
     if request.method == 'POST':
@@ -69,7 +61,7 @@ def editMenuItem(restaurant_id, menu_id):
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     item = session.query(MenuItem).filter_by(id=menu_id).one()
     # Current user (if there is one) is not the creator
-    if login_session['id'] != restaurant.user_id:
+    if login_session['user_id'] != restaurant.user_id:
         return 'User not identified. Access denied'
 
     if request.method == 'POST':
@@ -96,7 +88,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     item = session.query(MenuItem).filter_by(id=menu_id).one()
 
     # Current user (if there is one) is not the creator
-    if login_session['id'] != restaurant.user_id:
+    if login_session['user_id'] != restaurant.user_id:
         return 'User not identified. Access denied'
 
     if request.method == 'POST':

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="breadcrumb">{{restaurant.name}}</h3>
+<h1 class="title">{{restaurant.name}}</h1>
 <h2 class="form-title">Edit Restaurant</h2>
 <form action="{{url_for('.editRestaurant', restaurant_id=restaurant.id)}}" method="POST">
   Name:
