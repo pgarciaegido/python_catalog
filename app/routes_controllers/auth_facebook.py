@@ -1,4 +1,4 @@
-from flask import request, flash, Blueprint, make_response
+from flask import request, flash, Blueprint, make_response, render_template
 from flask import session as login_session
 
 import httplib2
@@ -74,17 +74,7 @@ def fbconnect():
         user_id = create_user(login_session)
     login_session['user_id'] = user_id
 
-    output = ''
-    output += '<h1>Welcome, '
-    output += login_session['username']
-
-    output += '!</h1>'
-    output += '<img src="'
-    output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
-
-    flash("Now logged in as %s" % login_session['username'])
-    return output
+    return render_template('welcome.html')
 
 
 def fbdisconnect():
