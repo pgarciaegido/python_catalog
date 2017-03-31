@@ -15,11 +15,24 @@ This project runs in Python, so first you will need to have it installed. I have
 
 Python packages used are sqlalchemy and Flask.
 
-Clone the package and get the db file:
+After cloning, a Vagrant folder is included in the repository, so you can launch a virtual machine with everything set up. (Courtesy of Udacity.) Just install Vagrant and Virtual Box. Then in the folder:
+
+```sh
+vagrant up
+```
+
+And to get inside the machine:
+```sh
+vagrant ssh
+```
+You should already be inside the machine.
+
+In case you have troube with the database, you can generate a new file from the models:
 
 ```sh
 python ./app/models/models.py
 ```
+
 
 You can introduce some dummy information running the *lotsofitems.py* file.
 
