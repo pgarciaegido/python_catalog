@@ -2,7 +2,7 @@ from flask import (jsonify, Blueprint)
 
 # Import db settings
 from app.models.session_setup import export_db_session
-from app.models.models import Restaurant, MenuItem
+from app.models.models import Category, Item
 
 
 session = export_db_session()
@@ -10,30 +10,30 @@ api = Blueprint('api', __name__, template_folder='templates')
 
 
 # API =========================================================================
-@api.route('/restaurants/JSON')
-def restaurantsJSON():
+@api.route('/categories/JSON')
+def catalogJSON():
 
-    """ Send all restaurants in JSON """
+    """ Send all categories in JSON """
 
-    restaurants = session.query(Restaurant).all()
-    return jsonify(Restaurants=[r.serialize for r in restaurants])
-
-
-@api.route('/restaurant/<int:restaurant_id>/menu/JSON')
-def restaurantMenuJSON(restaurant_id):
-
-    """ Send all menu items from a restaurant in JSON """
-
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    itms = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
-    return jsonify(MenuItems=[i.serialize for i in itms])
+    categories = session.query(Category).all()
+    return jsonify(Categories=[r.serialize for r in categories])
 
 
-@api.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
-def menuItemJSON(restaurant_id, menu_id):
+@api.route('/category/<int:category_id>/list/JSON')
+def categoryItemsJSON(category_id):
 
-    """ Send an specific menu item info in JSON """
+    """ Send all items from a category in JSON """
 
-    item = session.query(MenuItem).filter_by(restaurant_id=restaurant_id,
-                                             id=menu_id).one()
-    return jsonify(MenuItem=item.serialize)
+    category = session.query(Category).filter_by(id=category_id).one()
+    itms = session.query(Item).filter_by(category_id=category_id).all()
+    return jsonify(Items=[i.serialize for i in itms])
+
+
+@api.route('/category/<int:category_id>/list/<int:item_id>/JSON')
+def itemJSON(category_id, item_id):
+
+    """ Send an specific item info in JSON """
+
+    item = session.query(Item).filter_by(category_id=category_id,
+                                         id=item_id).one()
+    return jsonify(Item=item.serialize)

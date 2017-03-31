@@ -1,6 +1,6 @@
 from flask import make_response
 from flask import session as login_session
-from app.models.models import User, Restaurant, MenuItem
+from app.models.models import User, Category, Item
 from app.models.session_setup import export_db_session
 import json
 

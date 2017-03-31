@@ -11,13 +11,13 @@
 {% endif %}
   {% endwith %}
 
-<h1 class="title">{{restaurant.name}}</h1>
+<h1 class="title">{{category.name}}</h1>
 
 
 <!-- IF USER LOGGED, CREATE BUTTON AVAILABLE -->
-{% if session.user_id == restaurant.user_id %}
+{% if session.user_id %}
 <div class="title-create">
-  <a href='{{url_for('.newMenuItem', restaurant_id=restaurant.id)}}' class="create-item">Create new menu item</a>
+  <a href='{{url_for('.newItem', category_id=category.id)}}' class="create-item">Create new item</a>
 </div>
 {% endif %}
 
@@ -27,9 +27,10 @@
     <h2 class="name">{{i.name}}</h2>
     <p class="description">{{i.description}}</p>
     <div class="price"> <span>{{i.price}}</span></div>
-    {% if session.user_id == restaurant.user_id %}
-    <a href ='{{url_for('.editMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}' class="edit btn">Edit</a>
-    <a href = '{{url_for('.deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id ) }}' class="delete btn">Delete</a>
+    <!-- IF LOGGED USER IS THE SAME AS ITEM USER CREATOR -->
+    {% if session.user_id == i.user_id %}
+    <a href ='{{url_for('.editItem', category_id = category.id, item_id = i.id) }}' class="edit btn">Edit</a>
+    <a href = '{{url_for('.deleteItem', category_id = category.id, item_id = i.id ) }}' class="delete btn">Delete</a>
     {% endif %}
   </div>
 {% endfor %}

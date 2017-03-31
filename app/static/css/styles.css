@@ -141,7 +141,7 @@ header .hright{
 
 /***************************** RESTAURANT ************************************/
 
-.menu-item .restaurant,
+.menu-item .category,
 .menu-item .item{
   width: 50%;
   box-sizing: border-box;
@@ -157,7 +157,7 @@ header .hright{
   cursor: auto;
 }
 
-.menu-item .restaurant:hover,
+.menu-item .category:hover,
 .menu-item .item:hover{
   background-color: #eee;
 }
@@ -211,7 +211,7 @@ header .hright{
   opacity: 0.5;
 }
 
-.menu-item .restaurant .buttons{
+.menu-item .category .buttons{
   text-align: center;
   margin-top: 5px;
 }

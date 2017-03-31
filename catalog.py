@@ -5,8 +5,8 @@ from flask import Flask
 from app.routes_controllers.auth import auth
 from app.routes_controllers.auth_google import gauth
 from app.routes_controllers.auth_facebook import fauth
-from app.routes_controllers.restaurants import rest
-from app.routes_controllers.menu_item import item
+from app.routes_controllers.categories import cat
+from app.routes_controllers.item import item
 from app.routes_controllers.api_json import api
 
 
@@ -16,7 +16,7 @@ app = Flask(__name__, template_folder='app/templates',
 app.register_blueprint(auth)
 app.register_blueprint(gauth)
 app.register_blueprint(fauth)
-app.register_blueprint(rest)
+app.register_blueprint(cat)
 app.register_blueprint(item)
 app.register_blueprint(api)
 

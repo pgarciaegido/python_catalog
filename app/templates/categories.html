@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- FEEDBACK MESSAGES  -->
+  <!-- array of messages -->
+  {% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+      <p class="feedback">{{message}}</p>
+    {% endfor %}
+{% endif %}
+  {% endwith %}
+
+
+<h1 class="call">Discover the hottest items in town!</h1>
+
+<!-- IF NOT LOGGED IN -->
+{% if not session.email %}
+<div class="call-button"><a href="/login">Signup now!</a></div>
+{% endif %}
+
+<div class="menu-item">
+  {% for c in categories %}
+  <div class="category">
+    <a href="{{url_for('items.showCategory', category_id = c.id)}}" class="name-anchor"><h2 class="name">{{c.name}}</h2></a>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}
