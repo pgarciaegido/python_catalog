@@ -3,3 +3,5 @@ Vagrantfile
 pg_config.sh
 .vagrant
 restaurantmenu.db
+client_secrets.json
+fb_client_secrets.json
