@@ -78,7 +78,12 @@ def editItem(category_id, item_id):
         return 'Item does not exist!'
 
     # Current user (if there is one) is not the creator
-    if login_session['user_id'] != item.user_id:
+    try:
+        logged_user = login_session['user_id']
+    except:
+        return 'User not identified. Access denied'
+
+    if logged_user != item.user_id:
         return 'User not identified. Access denied'
 
     if request.method == 'POST':
@@ -112,7 +117,12 @@ def deleteItem(category_id, item_id):
         return 'Item does not exist!'
 
     # Current user (if there is one) is not the creator
-    if login_session['user_id'] != item.user_id:
+    try:
+        logged_user = login_session['user_id']
+    except:
+        return 'User not identified. Access denied'
+
+    if logged_user != item.user_id:
         return 'User not identified. Access denied'
 
     if request.method == 'POST':
